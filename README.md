@@ -1,49 +1,68 @@
 # EDA_ON_DIWALI_SALES
 
-This Python code utilizes various data manipulation and visualization techniques to analyze Diwali sales data from a CSV file ('Diwali_Sales_Data.csv'). The code performs the following steps:
+Importing Libraries:
+The code begins by importing the necessary Python libraries for data analysis and visualization. These libraries include:
 
-Import necessary Python libraries, including NumPy, Pandas, Matplotlib, and Seaborn, for data analysis and visualization.
+numpy (as np) for numerical computing in Python.
+pandas (as pd) for data manipulation and analysis using DataFrames.
+matplotlib.pyplot (as plt) for visualizing data through various plots.
+seaborn for creating more visually appealing and informative statistical graphics.
 
-Read the CSV file into a Pandas DataFrame, examine its shape, and display the first few rows and info about the data.
+Loading the Data:
+The code reads the Diwali sales data from the CSV file 'Diwali_Sales_Data.csv' into a Pandas DataFrame called df. It uses pd.read_csv() function to achieve this. Additionally, it uses the 'unicode_escape' encoding to handle any special characters present in the CSV file.
 
-Drop unrelated/blank columns ('Status' and 'unnamed1') from the DataFrame.
+Data Exploration:
+The code performs initial exploration of the data:
+It displays the shape of the DataFrame using df.shape to show the number of rows and columns.
+It shows the first few rows of the DataFrame using df.head() to get a glimpse of the data.
+It prints the summary of the DataFrame using df.info() to get information about the data types and non-null values in each column.
 
-Check for and drop null values from the DataFrame.
+Data Cleaning:
+Drop Unrelated Columns:
+The code drops two columns, 'Status' and 'unnamed1', from the DataFrame using df.drop(). These columns are considered unrelated to the analysis and are removed from the DataFrame to focus on relevant data.
 
-Convert the 'Amount' column to an integer data type.
+Handling Null Values:
+The code checks for null values in the DataFrame using pd.isnull(df).sum() to count the number of missing values in each column. It then drops rows containing null values using df.dropna().
 
-Rename the 'Marital_Status' column to 'Shaadi' (though the renaming is not applied to the DataFrame).
+Data Type Conversion:
+The code converts the 'Amount' column to the integer data type using df['Amount'] = df['Amount'].astype('int'). This conversion is useful for performing numerical calculations and visualizations on the 'Amount' column.
 
-Perform statistical descriptions using the describe() method on the DataFrame and specific columns ('Age', 'Orders', and 'Amount').
+Column Renaming (Not Applied):
+The code renames the 'Marital_Status' column to 'Shaadi' using df.rename(columns={'Marital_Status':'Shaadi'}). However, this renaming is not applied to the DataFrame itself, so the column name remains unchanged.
 
-Visualize the data using different types of plots, including bar charts, to gain insights into sales patterns:
+Statistical Description:
+The code uses df.describe() to generate a statistical summary of the data in the DataFrame. It provides statistical measures like count, mean, standard deviation, minimum, 25th percentile, median (50th percentile), 75th percentile, and maximum for all numeric columns in the DataFrame.
 
-a. Plot the count of each gender in the dataset.
+Specific Column Descriptions:
+The code uses df[['Age', 'Orders', 'Amount']].describe() to generate a more focused statistical summary for specific columns: 'Age', 'Orders', and 'Amount'. This helps in understanding the distribution of these individual columns.
+Data Visualization:
+The code uses various Seaborn and Matplotlib functions to visualize the data and gain insights from it. It creates different types of bar charts, each with a specific focus:
 
-b. Plot the total amount of sales for each gender.
+Gender vs. Count: The code plots a countplot (bar chart) to visualize the distribution of genders and their counts in the dataset.
 
-c. Plot the count of each age group by gender.
+Gender vs. Total Amount: The code uses a barplot to compare the total amount of sales between different genders.
 
-d. Plot the total amount of sales for each age group.
+Gender vs. Count by Age Group: The code creates a grouped countplot to visualize the count of each gender within different age groups.
 
-e. Plot the total number of orders from the top 10 states.
+Age Group vs. Total Amount: The code uses a barplot to display the total amount of sales for each age group.
 
-f. Plot the total amount of sales from the top 10 states.
+Top 10 States: The code calculates and plots the total number of orders and total amount of sales for the top 10 states with the highest values.
 
-g. Plot the count of individuals with different marital statuses.
+Marital Status: The code plots a countplot to show the count of individuals with different marital statuses.
 
-h. Plot the total amount of sales for each gender within different marital statuses.
+Marital Status vs. Total Amount by Gender: The code creates a barplot to compare the total sales amount for each gender within different marital statuses.
 
-i. Plot the count of individuals belonging to different occupations.
+Occupation: The code plots a countplot to visualize the count of individuals belonging to different occupations.
 
-j. Plot the total amount of sales for each occupation.
+Occupation vs. Total Amount: The code uses a barplot to show the total amount of sales for each occupation.
 
-k. Plot the count of sales for the top 10 product categories.
+Product Category: The code plots a countplot to visualize the count of sales for each product category.
 
-l. Plot the total amount of sales for the top 10 product categories.
+Product Category vs. Total Amount: The code creates a barplot to display the total amount of sales for the top 10 product categories.
 
-m. Plot the total number of orders for the top 10 product IDs.
+Top 10 Product IDs: The code calculates and plots the total number of orders for the top 10 product IDs.
 
-n. Plot the sum of orders for the top 10 product IDs in a bar chart.
+Additional Visualization:
+The code uses Matplotlib to create a bar chart to show the sum of orders for the top 10 product IDs in a single plot.
 
-The code creates multiple visualizations to help understand the distribution of sales data based on various attributes like gender, age group, state, marital status, occupation, product category, and product ID.
+The code presents a comprehensive analysis of the Diwali sales data, exploring various aspects such as gender distribution, age groups, states with the highest sales, marital status, occupation, and top-selling product categories and products. These visualizations provide valuable insights into the dataset and help understand sales patterns and trends effectively.
